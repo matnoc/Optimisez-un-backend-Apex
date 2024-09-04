@@ -4,7 +4,7 @@ public class UpdateAccountsTurnoverBatchTest {
     
     // Test du bon fonctionnement du batch
     @IsTest
-    public static void testBatchWithSchedule(){
+    public static void testBatch(){
         CreateDataTest.createAccountOrder(1,250);
         Order[] ord = [SELECT Id,TotalAmount FROM Order ORDER BY Name ASC];
         
@@ -28,4 +28,13 @@ public class UpdateAccountsTurnoverBatchTest {
         Account[] acc = [SELECT Id, Turnover__c, Name FROM Account WHERE Name = 'Account1'];
         Assert.areEqual(210000*250, acc[0].Turnover__c);
     }
+    
+    
+    @IsTest
+    public static void testSchedule(){
+        Test.startTest();
+        System.schedule('ScheduleBatch', '0 48 * * * ?',new ScheduleBatch());
+        Test.stopTest();
+    }
+    
 }
