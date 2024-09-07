@@ -16,7 +16,7 @@ private class TriggerTest {
         Assert.areEqual(21000, acc[0].Turnover__c);
     }
     
-    // Tester le Trigger pour 1 Compte possèdant 2 commande update en même temps
+    // Tester le Trigger pour 1 Compte possèdant 2 commandes update en même temps
     @isTest static void testUpdate2Order1Account() {
         CreateDataTest.createAccountOrder(1,2);
         Order[] ord = [SELECT Id, TotalAmount, Status FROM Order WHERE Name LIKE 'Account1%'];
@@ -34,7 +34,7 @@ private class TriggerTest {
     }
     
     
-    // Tester le Trigger pour 1 Compte possèdant 2 commande mais n'ayant qu'une seul étant update
+    // Tester le Trigger pour 1 Compte possèdant 2 commandes mais n'ayant qu'une seule étant update
      @isTest static void test2Order1Account() {
         CreateDataTest.createAccountOrder(1,2);
         Order ord = [SELECT Id, TotalAmount, Status FROM Order WHERE Name ='Account1Order1'];

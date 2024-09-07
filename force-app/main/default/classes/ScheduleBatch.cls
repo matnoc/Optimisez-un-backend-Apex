@@ -1,6 +1,6 @@
 global class ScheduleBatch implements Schedulable {
 
-    // Utilisation du Batch toute les semaine
+    // Utilisation du Batch toutes les semaines
    global void execute(SchedulableContext sc) {
       Database.executeBatch(new UpdateAccountsTurnoverBatch());
    }
