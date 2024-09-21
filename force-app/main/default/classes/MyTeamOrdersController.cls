@@ -1,13 +1,10 @@
 public without sharing class MyTeamOrdersController {
-    
-    public List<Order> getOrders() {
-    	List<Order> results = Database.query(
-        	'SELECT Id, Name, AccountId, TotalAmount, OwnerId ' +
-        	'FROM Order ' +
-        	'ORDER BY OwnerId ASC '
-    	);
-    return results;
-	}
-    
-    
+    public decimal SumOders{
+        get{
+			AggregateResult groupedResults = [SELECT SUM(TotalAmount) total FROM Order WHERE Status = 'Ordered'];
+			return (decimal)groupedResults.get('total');
+
+        }
+        set;
+    }
 }

@@ -1,10 +1,7 @@
 <apex:page controller="MyTeamOrdersController" >
-    <apex:pageBlock title="Orders List" id="orders_list">
-    	<apex:pageBlockTable value="{! orders }" var="ord">
-            <apex:column value="{! ord.OwnerId }"/>
-            <apex:column value="{! ord.Name }"/>
-            <apex:column value="{! ord.AccountId }"/>
-            <apex:column value="{! ord.TotalAmount }"/>
-        </apex:pageBlockTable>
-        </apex:pageBlock>
+    <div>
+        <h1>
+            Sum of my team orders: <apex:outputText value="{!SumOders}" />
+        </h1>
+    </div>
 </apex:page>
